@@ -87,7 +87,7 @@ let props = defineProps({
 
 
 let initializeId = () => {
-    return props.foods[props.selected_id.slice(1)];
+    return props.foods[0];
 }
 
 

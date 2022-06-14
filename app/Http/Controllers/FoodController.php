@@ -105,7 +105,7 @@ class FoodController extends Controller
                 'name' => $category->ctname,
                 'category' => $category->id
             ]),
-            'foods' => Food::all()->where('id',$id)->map(fn($food) => [
+            'foods' => Food::where('id',$id)->get()->map(fn($food) => [
                 'name' => $food->fbname,
                 'price' => $food->fbprice,
                 'image' => $food->fbimage,

@@ -22858,7 +22858,7 @@ __webpack_require__.r(__webpack_exports__);
     var props = __props;
 
     var initializeId = function initializeId() {
-      return props.foods[props.selected_id.slice(1)];
+      return props.foods[0];
     };
 
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
