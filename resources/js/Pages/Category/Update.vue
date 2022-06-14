@@ -1,5 +1,5 @@
 <template>
- <Head title="Dashboard" />
+    <Head title="Dashboard" />
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -36,7 +36,7 @@
                     {{ form.progress.percentage }}%
                     </progress>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create</button>
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update</button>
                     </div>
                 </div>
             </div>
@@ -44,17 +44,23 @@
     </BreezeAuthenticatedLayout>
 </template>
 <script setup>
+import { Head, useForm } from '@inertiajs/inertia-vue3';
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import {Head,useForm } from '@inertiajs/inertia-vue3'
+const props = defineProps({
+    selected_id: String,
+    category: Object
+})
+
 
 const form = useForm({
-    name: '',
-    description: ''
+    name: props.category[0].name,
+    description: props.category[0].description
 })
 
 let submit = () => {
-    form.post('/category', {
+    form.post(`/category/update/${props.selected_id}`, {
         preserveScroll: true
-    })
+    });
 }
+
 </script>

@@ -145,7 +145,7 @@ class FoodController extends Controller
             $filePath = null;
         }
         $food->update([
-            'fbname' => $attributes['name'],
+                'fbname' => $attributes['name'],
                 'fbprice' => $attributes['price'],
                 'fbimage' => $attributes['image'] == '' ? $food->fbimage : $filePath,
                 'category_id' => $attributes['category']

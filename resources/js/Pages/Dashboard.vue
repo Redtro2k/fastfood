@@ -10,7 +10,7 @@ const props = defineProps({
 
 const projects = [
   { name: 'Foods', initials: 'F', href: '/food', members: props.foods, bgColor: 'bg-pink-600' },
-  { name: 'Categories', initials: 'C', href: '#', members: props.categories, bgColor: 'bg-purple-600' },
+  { name: 'Categories', initials: 'C', href: '/category', members: props.categories, bgColor: 'bg-purple-600' },
 ]
 
 </script>

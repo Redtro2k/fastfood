@@ -18,6 +18,7 @@ class CategoriesController extends Controller
         //
         return Inertia::render('Category/Index',[
             'categories' => Category::all()->map(fn($ct) => [
+                'id' => $ct->id,
                 'name' => $ct->ctname,
                 'description' => $ct->ctdescription,
             ])
@@ -75,8 +76,12 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        return Inertia::render('Category/Edit', [
-            'category' => Category::find($id)
+        return Inertia::render('Category/Update', [
+            'category' => Category::where('id', $id)->get()->map(fn($ct) => [
+                'name' => $ct->ctname,
+                'description' => $ct->ctdescription
+            ]),
+            'selected_id' => $id
         ]);
     }
 
@@ -94,13 +99,11 @@ class CategoriesController extends Controller
             'name' => 'required',
             'description' => 'required'
         ]);
-
         $category = Category::find($id);
         $category->update([
             'ctname' => $attributes['name'],
             'ctdescription' => $attributes['description']
         ]);
-
         return redirect()->route('categories');
     }
 

@@ -65,7 +65,11 @@ Route::middleware(['auth', 'verified', 'checkrole'])->group(function () {
 
     Route::controller(CategoriesController::class)->prefix('category')->group(function (){
         Route::get('/', 'index')->name('categories');
-        Route::get('/new', 'create');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('{id}/edit', 'edit');
+        Route::get('{id}/delete', 'destroy');
+        Route::post('/update/{id}', 'update');
     });
 });
 
